@@ -17,7 +17,7 @@ import jakarta.servlet.http.HttpSession;
 @RestController
 @RequestMapping("/api/Events")
 public class EventsController {
-	
+
     @Autowired
     private EventServiceInterface service;
 
@@ -28,11 +28,12 @@ public class EventsController {
             return ResponseEntity.ok(entity);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(eventCategory + " Under Development");
+                    .body(eventCategory + " Under Development");
         }
     }
-    
-    ////Demo User booking page
+
+    //// Demo User booking pag
+
     @GetMapping("/booking")
     public ResponseEntity<?> getUserBookings(@RequestParam String email) {
         if (email == null || email.isEmpty()) {
@@ -43,17 +44,18 @@ public class EventsController {
         return ResponseEntity.ok(list);
     }
 
-//    // User booking page MAIN
-//    @GetMapping("/booking")
-//    public ResponseEntity<?> getUserBookings(HttpSession session) {
-//        String userEmail = (String) session.getAttribute("umail");
-//        if (userEmail == null) {
-//            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
-//        }
-//
-//        List<Form> list = service.getUserEvents(userEmail);
-//        return ResponseEntity.ok(list);
-//    }
+    // // User booking page MAIN
+    // @GetMapping("/booking")
+    // public ResponseEntity<?> getUserBookings(HttpSession session) {
+    // String userEmail = (String) session.getAttribute("umail");
+    // if (userEmail == null) {
+    // return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged
+    // in");
+    // }
+    //
+    // List<Form> list = service.getUserEvents(userEmail);
+    // return ResponseEntity.ok(list);
+    // }
 
     // User Booking Canceling
     @DeleteMapping("deleteUserBooking")
